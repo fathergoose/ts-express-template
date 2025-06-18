@@ -12,4 +12,10 @@ CREATE TABLE tracks (
   title TEXT NOT NULL,
   artist_id
 )
+
+CREATE TABLE artists_tracks (
+  artist_id: int REFERENCES artists(id), -- CASCADE ?
+  track_id: int REFERENCES tracks(id), -- CASCADE ?
+  CONSTRAINT artists_tracks_pkey PRIMARY KEY (artists_id, track_id),
+)
 -- migrate:down
