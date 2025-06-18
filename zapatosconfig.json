@@ -1,4 +1,4 @@
 {
-  "db": { "connectionString": "postgresql://localhost/example_db" },
+  "db": { "connectionString": "postgresql://localhost/listening_list" },
   "outDir": "./src"
 }
