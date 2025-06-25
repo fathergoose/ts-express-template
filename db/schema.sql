@@ -22,7 +22,7 @@ CREATE TABLE public.albums (
     id integer NOT NULL,
     name text NOT NULL,
     album_artist_id integer,
-    genere_id integer
+    genre_id integer
 );
 
 
@@ -87,10 +87,10 @@ CREATE TABLE public.artists_tracks (
 
 
 --
--- Name: generes; Type: TABLE; Schema: public; Owner: -
+-- Name: genres; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.generes (
+CREATE TABLE public.genres (
     id integer NOT NULL,
     name text NOT NULL
 );
@@ -113,7 +113,7 @@ CREATE SEQUENCE public.generes_id_seq
 -- Name: generes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.generes_id_seq OWNED BY public.generes.id;
+ALTER SEQUENCE public.generes_id_seq OWNED BY public.genres.id;
 
 
 --
@@ -121,7 +121,7 @@ ALTER SEQUENCE public.generes_id_seq OWNED BY public.generes.id;
 --
 
 CREATE TABLE public.schema_migrations (
-    version character varying(128) NOT NULL
+    version character varying NOT NULL
 );
 
 
@@ -171,10 +171,10 @@ ALTER TABLE ONLY public.artists ALTER COLUMN id SET DEFAULT nextval('public.arti
 
 
 --
--- Name: generes id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: genres id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.generes ALTER COLUMN id SET DEFAULT nextval('public.generes_id_seq'::regclass);
+ALTER TABLE ONLY public.genres ALTER COLUMN id SET DEFAULT nextval('public.generes_id_seq'::regclass);
 
 
 --
@@ -209,11 +209,11 @@ ALTER TABLE ONLY public.artists_tracks
 
 
 --
--- Name: generes generes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: genres genres_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.generes
-    ADD CONSTRAINT generes_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY public.genres
+    ADD CONSTRAINT genres_pkey PRIMARY KEY (id);
 
 
 --
@@ -241,11 +241,11 @@ ALTER TABLE ONLY public.albums
 
 
 --
--- Name: albums albums_genere_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: albums albums_genre_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.albums
-    ADD CONSTRAINT albums_genere_id_fkey FOREIGN KEY (genere_id) REFERENCES public.generes(id);
+    ADD CONSTRAINT albums_genre_id_fkey FOREIGN KEY (genre_id) REFERENCES public.genres(id);
 
 
 --
@@ -282,4 +282,6 @@ ALTER TABLE ONLY public.tracks
 --
 
 INSERT INTO public.schema_migrations (version) VALUES
-    ('20250616232652');
+    ('20250616232652'),
+    ('20250625183255'),
+    ('20250625191608');
