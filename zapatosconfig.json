@@ -1,4 +1,6 @@
 {
-  "db": { "connectionString": "postgresql://localhost/listening_list" },
+  "db": {
+    "connectionString": "postgresql://postgres:password@localhost:5432/listening_list?sslmode=disable"
+  },
   "outDir": "./src"
 }
