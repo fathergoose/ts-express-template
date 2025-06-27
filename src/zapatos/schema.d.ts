@@ -36,11 +36,11 @@ declare module 'zapatos/schema' {
       */
       album_artist_id: number | null;
       /**
-      * **albums.genere_id**
+      * **albums.genre_id**
       * - `int4` in database
       * - Nullable, no default
       */
-      genere_id: number | null;
+      genre_id: number | null;
       /**
       * **albums.id**
       * - `int4` in database
@@ -62,11 +62,11 @@ declare module 'zapatos/schema' {
       */
       album_artist_id: number | null;
       /**
-      * **albums.genere_id**
+      * **albums.genre_id**
       * - `int4` in database
       * - Nullable, no default
       */
-      genere_id: number | null;
+      genre_id: number | null;
       /**
       * **albums.id**
       * - `int4` in database
@@ -88,11 +88,11 @@ declare module 'zapatos/schema' {
       */
       album_artist_id?: number | db.Parameter<number> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, number | db.Parameter<number> | db.SQLFragment | db.ParentColumn>;
       /**
-      * **albums.genere_id**
+      * **albums.genre_id**
       * - `int4` in database
       * - Nullable, no default
       */
-      genere_id?: number | db.Parameter<number> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, number | db.Parameter<number> | db.SQLFragment | db.ParentColumn>;
+      genre_id?: number | db.Parameter<number> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, number | db.Parameter<number> | db.SQLFragment | db.ParentColumn>;
       /**
       * **albums.id**
       * - `int4` in database
@@ -114,11 +114,11 @@ declare module 'zapatos/schema' {
       */
       album_artist_id?: number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment;
       /**
-      * **albums.genere_id**
+      * **albums.genre_id**
       * - `int4` in database
       * - Nullable, no default
       */
-      genere_id?: number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment;
+      genre_id?: number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment;
       /**
       * **albums.id**
       * - `int4` in database
@@ -140,11 +140,11 @@ declare module 'zapatos/schema' {
       */
       album_artist_id?: number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment | db.SQLFragment<any, number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment>;
       /**
-      * **albums.genere_id**
+      * **albums.genre_id**
       * - `int4` in database
       * - Nullable, no default
       */
-      genere_id?: number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment | db.SQLFragment<any, number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment>;
+      genre_id?: number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment | db.SQLFragment<any, number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment>;
       /**
       * **albums.id**
       * - `int4` in database
@@ -332,20 +332,20 @@ declare module 'zapatos/schema' {
   }
 
   /**
-   * **generes**
+   * **genres**
    * - Table in database
    */
-  export namespace generes {
-    export type Table = 'generes';
+  export namespace genres {
+    export type Table = 'genres';
     export interface Selectable {
       /**
-      * **generes.id**
+      * **genres.id**
       * - `int4` in database
       * - `NOT NULL`, default: `nextval('generes_id_seq'::regclass)`
       */
       id: number;
       /**
-      * **generes.name**
+      * **genres.name**
       * - `text` in database
       * - `NOT NULL`, no default
       */
@@ -353,13 +353,13 @@ declare module 'zapatos/schema' {
     }
     export interface JSONSelectable {
       /**
-      * **generes.id**
+      * **genres.id**
       * - `int4` in database
       * - `NOT NULL`, default: `nextval('generes_id_seq'::regclass)`
       */
       id: number;
       /**
-      * **generes.name**
+      * **genres.name**
       * - `text` in database
       * - `NOT NULL`, no default
       */
@@ -367,13 +367,13 @@ declare module 'zapatos/schema' {
     }
     export interface Whereable {
       /**
-      * **generes.id**
+      * **genres.id**
       * - `int4` in database
       * - `NOT NULL`, default: `nextval('generes_id_seq'::regclass)`
       */
       id?: number | db.Parameter<number> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, number | db.Parameter<number> | db.SQLFragment | db.ParentColumn>;
       /**
-      * **generes.name**
+      * **genres.name**
       * - `text` in database
       * - `NOT NULL`, no default
       */
@@ -381,13 +381,13 @@ declare module 'zapatos/schema' {
     }
     export interface Insertable {
       /**
-      * **generes.id**
+      * **genres.id**
       * - `int4` in database
       * - `NOT NULL`, default: `nextval('generes_id_seq'::regclass)`
       */
       id?: number | db.Parameter<number> | db.DefaultType | db.SQLFragment;
       /**
-      * **generes.name**
+      * **genres.name**
       * - `text` in database
       * - `NOT NULL`, no default
       */
@@ -395,19 +395,19 @@ declare module 'zapatos/schema' {
     }
     export interface Updatable {
       /**
-      * **generes.id**
+      * **genres.id**
       * - `int4` in database
       * - `NOT NULL`, default: `nextval('generes_id_seq'::regclass)`
       */
       id?: number | db.Parameter<number> | db.DefaultType | db.SQLFragment | db.SQLFragment<any, number | db.Parameter<number> | db.DefaultType | db.SQLFragment>;
       /**
-      * **generes.name**
+      * **genres.name**
       * - `text` in database
       * - `NOT NULL`, no default
       */
       name?: string | db.Parameter<string> | db.SQLFragment | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment>;
     }
-    export type UniqueIndex = 'generes_pkey';
+    export type UniqueIndex = 'genres_pkey';
     export type Column = keyof Selectable;
     export type OnlyCols<T extends readonly Column[]> = Pick<Selectable, T[number]>;
     export type SQLExpression = Table | db.ColumnNames<Updatable | (keyof Updatable)[]> | db.ColumnValues<Updatable> | Whereable | Column | db.ParentColumn | db.GenericSQLExpression;
@@ -583,20 +583,20 @@ declare module 'zapatos/schema' {
   /* --- aggregate types --- */
 
   export namespace public {  
-    export type Table = albums.Table | artists.Table | artists_tracks.Table | generes.Table | schema_migrations.Table | tracks.Table;
-    export type Selectable = albums.Selectable | artists.Selectable | artists_tracks.Selectable | generes.Selectable | schema_migrations.Selectable | tracks.Selectable;
-    export type JSONSelectable = albums.JSONSelectable | artists.JSONSelectable | artists_tracks.JSONSelectable | generes.JSONSelectable | schema_migrations.JSONSelectable | tracks.JSONSelectable;
-    export type Whereable = albums.Whereable | artists.Whereable | artists_tracks.Whereable | generes.Whereable | schema_migrations.Whereable | tracks.Whereable;
-    export type Insertable = albums.Insertable | artists.Insertable | artists_tracks.Insertable | generes.Insertable | schema_migrations.Insertable | tracks.Insertable;
-    export type Updatable = albums.Updatable | artists.Updatable | artists_tracks.Updatable | generes.Updatable | schema_migrations.Updatable | tracks.Updatable;
-    export type UniqueIndex = albums.UniqueIndex | artists.UniqueIndex | artists_tracks.UniqueIndex | generes.UniqueIndex | schema_migrations.UniqueIndex | tracks.UniqueIndex;
-    export type Column = albums.Column | artists.Column | artists_tracks.Column | generes.Column | schema_migrations.Column | tracks.Column;
+    export type Table = albums.Table | artists.Table | artists_tracks.Table | genres.Table | schema_migrations.Table | tracks.Table;
+    export type Selectable = albums.Selectable | artists.Selectable | artists_tracks.Selectable | genres.Selectable | schema_migrations.Selectable | tracks.Selectable;
+    export type JSONSelectable = albums.JSONSelectable | artists.JSONSelectable | artists_tracks.JSONSelectable | genres.JSONSelectable | schema_migrations.JSONSelectable | tracks.JSONSelectable;
+    export type Whereable = albums.Whereable | artists.Whereable | artists_tracks.Whereable | genres.Whereable | schema_migrations.Whereable | tracks.Whereable;
+    export type Insertable = albums.Insertable | artists.Insertable | artists_tracks.Insertable | genres.Insertable | schema_migrations.Insertable | tracks.Insertable;
+    export type Updatable = albums.Updatable | artists.Updatable | artists_tracks.Updatable | genres.Updatable | schema_migrations.Updatable | tracks.Updatable;
+    export type UniqueIndex = albums.UniqueIndex | artists.UniqueIndex | artists_tracks.UniqueIndex | genres.UniqueIndex | schema_migrations.UniqueIndex | tracks.UniqueIndex;
+    export type Column = albums.Column | artists.Column | artists_tracks.Column | genres.Column | schema_migrations.Column | tracks.Column;
   
-    export type AllBaseTables = [albums.Table, artists.Table, artists_tracks.Table, generes.Table, schema_migrations.Table, tracks.Table];
+    export type AllBaseTables = [albums.Table, artists.Table, artists_tracks.Table, genres.Table, schema_migrations.Table, tracks.Table];
     export type AllForeignTables = [];
     export type AllViews = [];
     export type AllMaterializedViews = [];
-    export type AllTablesAndViews = [albums.Table, artists.Table, artists_tracks.Table, generes.Table, schema_migrations.Table, tracks.Table];
+    export type AllTablesAndViews = [albums.Table, artists.Table, artists_tracks.Table, genres.Table, schema_migrations.Table, tracks.Table];
   }
 
 
@@ -627,7 +627,7 @@ declare module 'zapatos/schema' {
     "albums": albums.Selectable;
     "artists": artists.Selectable;
     "artists_tracks": artists_tracks.Selectable;
-    "generes": generes.Selectable;
+    "genres": genres.Selectable;
     "schema_migrations": schema_migrations.Selectable;
     "tracks": tracks.Selectable;
   }[T];
@@ -636,7 +636,7 @@ declare module 'zapatos/schema' {
     "albums": albums.JSONSelectable;
     "artists": artists.JSONSelectable;
     "artists_tracks": artists_tracks.JSONSelectable;
-    "generes": generes.JSONSelectable;
+    "genres": genres.JSONSelectable;
     "schema_migrations": schema_migrations.JSONSelectable;
     "tracks": tracks.JSONSelectable;
   }[T];
@@ -645,7 +645,7 @@ declare module 'zapatos/schema' {
     "albums": albums.Whereable;
     "artists": artists.Whereable;
     "artists_tracks": artists_tracks.Whereable;
-    "generes": generes.Whereable;
+    "genres": genres.Whereable;
     "schema_migrations": schema_migrations.Whereable;
     "tracks": tracks.Whereable;
   }[T];
@@ -654,7 +654,7 @@ declare module 'zapatos/schema' {
     "albums": albums.Insertable;
     "artists": artists.Insertable;
     "artists_tracks": artists_tracks.Insertable;
-    "generes": generes.Insertable;
+    "genres": genres.Insertable;
     "schema_migrations": schema_migrations.Insertable;
     "tracks": tracks.Insertable;
   }[T];
@@ -663,7 +663,7 @@ declare module 'zapatos/schema' {
     "albums": albums.Updatable;
     "artists": artists.Updatable;
     "artists_tracks": artists_tracks.Updatable;
-    "generes": generes.Updatable;
+    "genres": genres.Updatable;
     "schema_migrations": schema_migrations.Updatable;
     "tracks": tracks.Updatable;
   }[T];
@@ -672,7 +672,7 @@ declare module 'zapatos/schema' {
     "albums": albums.UniqueIndex;
     "artists": artists.UniqueIndex;
     "artists_tracks": artists_tracks.UniqueIndex;
-    "generes": generes.UniqueIndex;
+    "genres": genres.UniqueIndex;
     "schema_migrations": schema_migrations.UniqueIndex;
     "tracks": tracks.UniqueIndex;
   }[T];
@@ -681,7 +681,7 @@ declare module 'zapatos/schema' {
     "albums": albums.Column;
     "artists": artists.Column;
     "artists_tracks": artists_tracks.Column;
-    "generes": generes.Column;
+    "genres": genres.Column;
     "schema_migrations": schema_migrations.Column;
     "tracks": tracks.Column;
   }[T];
@@ -690,7 +690,7 @@ declare module 'zapatos/schema' {
     "albums": albums.SQL;
     "artists": artists.SQL;
     "artists_tracks": artists_tracks.SQL;
-    "generes": generes.SQL;
+    "genres": genres.SQL;
     "schema_migrations": schema_migrations.SQL;
     "tracks": tracks.SQL;
   }[T];
