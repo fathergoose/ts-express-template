@@ -4,8 +4,8 @@ SET idle_in_transaction_session_timeout = 0;
 SET transaction_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
-SELECT pg_catalog.set_config('search_path', '', false);
-SET check_function_bodies = false;
+SELECT pg_catalog.set_config('search_path', '', FALSE);
+SET check_function_bodies = FALSE;
 SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
@@ -31,12 +31,12 @@ CREATE TABLE public.albums (
 --
 
 CREATE SEQUENCE public.albums_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
+AS integer
+START WITH 1
+INCREMENT BY 1
+NO MINVALUE
+NO MAXVALUE
+CACHE 1;
 
 
 --
@@ -61,12 +61,12 @@ CREATE TABLE public.artists (
 --
 
 CREATE SEQUENCE public.artists_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
+AS integer
+START WITH 1
+INCREMENT BY 1
+NO MINVALUE
+NO MAXVALUE
+CACHE 1;
 
 
 --
@@ -101,12 +101,12 @@ CREATE TABLE public.genres (
 --
 
 CREATE SEQUENCE public.generes_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
+AS integer
+START WITH 1
+INCREMENT BY 1
+NO MINVALUE
+NO MAXVALUE
+CACHE 1;
 
 
 --
@@ -141,12 +141,12 @@ CREATE TABLE public.tracks (
 --
 
 CREATE SEQUENCE public.tracks_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
+AS integer
+START WITH 1
+INCREMENT BY 1
+NO MINVALUE
+NO MAXVALUE
+CACHE 1;
 
 
 --
@@ -160,28 +160,36 @@ ALTER SEQUENCE public.tracks_id_seq OWNED BY public.tracks.id;
 -- Name: albums id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.albums ALTER COLUMN id SET DEFAULT nextval('public.albums_id_seq'::regclass);
+ALTER TABLE ONLY public.albums ALTER COLUMN id SET DEFAULT NEXTVAL(
+    'public.albums_id_seq'::regclass
+);
 
 
 --
 -- Name: artists id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.artists ALTER COLUMN id SET DEFAULT nextval('public.artists_id_seq'::regclass);
+ALTER TABLE ONLY public.artists ALTER COLUMN id SET DEFAULT NEXTVAL(
+    'public.artists_id_seq'::regclass
+);
 
 
 --
 -- Name: genres id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.genres ALTER COLUMN id SET DEFAULT nextval('public.generes_id_seq'::regclass);
+ALTER TABLE ONLY public.genres ALTER COLUMN id SET DEFAULT NEXTVAL(
+    'public.generes_id_seq'::regclass
+);
 
 
 --
 -- Name: tracks id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.tracks ALTER COLUMN id SET DEFAULT nextval('public.tracks_id_seq'::regclass);
+ALTER TABLE ONLY public.tracks ALTER COLUMN id SET DEFAULT NEXTVAL(
+    'public.tracks_id_seq'::regclass
+);
 
 
 --
@@ -189,7 +197,7 @@ ALTER TABLE ONLY public.tracks ALTER COLUMN id SET DEFAULT nextval('public.track
 --
 
 ALTER TABLE ONLY public.albums
-    ADD CONSTRAINT albums_pkey PRIMARY KEY (id);
+ADD CONSTRAINT albums_pkey PRIMARY KEY (id);
 
 
 --
@@ -197,7 +205,7 @@ ALTER TABLE ONLY public.albums
 --
 
 ALTER TABLE ONLY public.artists
-    ADD CONSTRAINT artists_pkey PRIMARY KEY (id);
+ADD CONSTRAINT artists_pkey PRIMARY KEY (id);
 
 
 --
@@ -205,7 +213,7 @@ ALTER TABLE ONLY public.artists
 --
 
 ALTER TABLE ONLY public.artists_tracks
-    ADD CONSTRAINT artists_tracks_pkey PRIMARY KEY (artist_id, track_id);
+ADD CONSTRAINT artists_tracks_pkey PRIMARY KEY (artist_id, track_id);
 
 
 --
@@ -213,7 +221,7 @@ ALTER TABLE ONLY public.artists_tracks
 --
 
 ALTER TABLE ONLY public.genres
-    ADD CONSTRAINT genres_pkey PRIMARY KEY (id);
+ADD CONSTRAINT genres_pkey PRIMARY KEY (id);
 
 
 --
@@ -221,7 +229,7 @@ ALTER TABLE ONLY public.genres
 --
 
 ALTER TABLE ONLY public.schema_migrations
-    ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
 
 
 --
@@ -229,7 +237,7 @@ ALTER TABLE ONLY public.schema_migrations
 --
 
 ALTER TABLE ONLY public.tracks
-    ADD CONSTRAINT tracks_pkey PRIMARY KEY (id);
+ADD CONSTRAINT tracks_pkey PRIMARY KEY (id);
 
 
 --
@@ -237,7 +245,9 @@ ALTER TABLE ONLY public.tracks
 --
 
 ALTER TABLE ONLY public.albums
-    ADD CONSTRAINT albums_album_artist_id_fkey FOREIGN KEY (album_artist_id) REFERENCES public.artists(id);
+ADD CONSTRAINT albums_album_artist_id_fkey FOREIGN KEY (
+    album_artist_id
+) REFERENCES public.artists (id);
 
 
 --
@@ -245,7 +255,9 @@ ALTER TABLE ONLY public.albums
 --
 
 ALTER TABLE ONLY public.albums
-    ADD CONSTRAINT albums_genre_id_fkey FOREIGN KEY (genre_id) REFERENCES public.genres(id);
+ADD CONSTRAINT albums_genre_id_fkey FOREIGN KEY (
+    genre_id
+) REFERENCES public.genres (id);
 
 
 --
@@ -253,7 +265,9 @@ ALTER TABLE ONLY public.albums
 --
 
 ALTER TABLE ONLY public.artists_tracks
-    ADD CONSTRAINT artists_tracks_artist_id_fkey FOREIGN KEY (artist_id) REFERENCES public.artists(id);
+ADD CONSTRAINT artists_tracks_artist_id_fkey FOREIGN KEY (
+    artist_id
+) REFERENCES public.artists (id);
 
 
 --
@@ -261,7 +275,9 @@ ALTER TABLE ONLY public.artists_tracks
 --
 
 ALTER TABLE ONLY public.artists_tracks
-    ADD CONSTRAINT artists_tracks_track_id_fkey FOREIGN KEY (track_id) REFERENCES public.tracks(id);
+ADD CONSTRAINT artists_tracks_track_id_fkey FOREIGN KEY (
+    track_id
+) REFERENCES public.tracks (id);
 
 
 --
@@ -269,7 +285,9 @@ ALTER TABLE ONLY public.artists_tracks
 --
 
 ALTER TABLE ONLY public.tracks
-    ADD CONSTRAINT tracks_album_id_fkey FOREIGN KEY (album_id) REFERENCES public.albums(id);
+ADD CONSTRAINT tracks_album_id_fkey FOREIGN KEY (
+    album_id
+) REFERENCES public.albums (id);
 
 
 --
@@ -282,6 +300,6 @@ ALTER TABLE ONLY public.tracks
 --
 
 INSERT INTO public.schema_migrations (version) VALUES
-    ('20250616232652'),
-    ('20250625183255'),
-    ('20250625191608');
+('20250616232652'),
+('20250625183255'),
+('20250625191608');
