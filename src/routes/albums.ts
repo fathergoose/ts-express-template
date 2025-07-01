@@ -7,9 +7,9 @@ import * as z from "zod/v4";
 const router = express.Router();
 
 async function getAlbumById(pool: pg.Pool, id: number) {
-  const [album] = await db.sql<s.albums.SQL, s.albums.Selectable[]>`
+  const result = await db.sql<s.albums.SQL, s.albums.Selectable[]>`
   SELECT * FROM ${"albums"} WHERE ${{ id }}`.run(pool);
-  return album;
+  return result[0];
 }
 
 async function getAllAlbums(pool: pg.Pool) {
@@ -43,11 +43,15 @@ export default function albumRouter(pool: pg.Pool) {
         try {
           id = Number.parseInt(req.params.id);
         } catch (e) {
+          console.log("catching error");
           console.error(e);
           res.send(400);
           return;
         }
         const album = await getAlbumById(pool, id);
+        if (album === undefined) {
+          res.sendStatus(404).send("Invalid album id");
+        }
         res.json(album);
       })
       /*
