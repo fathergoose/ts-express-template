@@ -1,0 +1,42 @@
+name: ll-backend
+services:
+  api:
+    container_name: ll-api
+    build: .
+    command: dev
+    develop:
+      watch:
+        - action: sync
+          path: ./src
+          target: /app/src
+          ignore:
+            - node_modules/
+        - action: rebuild
+          path: package.json
+    environment:
+      DATABASE_URL: "postgres://postgres:password@ll-pgdb:5432/listening_list"
+    ports:
+      - "3003:3003"
+    networks:
+      - ll-net
+    depends_on:
+      - db
+
+  db:
+    container_name: ll-pgdb
+    image: "postgres:latest"
+    environment:
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    networks:
+      - ll-net
+    volumes:
+      - type: volume
+        source: lldb-data
+        target: /var/lib/postgresql/data
+
+networks:
+  ll-net:
+volumes:
+  lldb-data:
